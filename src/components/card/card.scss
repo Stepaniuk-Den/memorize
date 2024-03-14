@@ -1,0 +1,51 @@
+@import "../../styles//variables.scss";
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 10rem;
+  padding: 1rem;
+  border: 2px solid $main-color;
+  border-radius: 1.5rem;
+
+  .answers {
+    position: absolute;
+    bottom: -11rem;
+    right: 0;
+    width: 20rem;
+    height: 10rem;
+    padding: 1rem;
+    background-color: none;
+    border: 2px solid $main-color;
+    border-radius: 1.5rem;
+    opacity: 0;
+
+    &-active {
+      position: absolute;
+      bottom: -11rem;
+      right: 0;
+      width: 20rem;
+      height: 10rem;
+      padding: 1rem;
+      background-color: none;
+      border: 2px solid $main-color;
+      border-radius: 1.5rem;
+      opacity: 1;
+    }
+  }
+
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // font-size: 2rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+}

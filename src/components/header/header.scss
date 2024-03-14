@@ -1,2 +1,10 @@
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 100vw;
+  height: 3rem;
+
+  outline: 1px solid red;
 }
