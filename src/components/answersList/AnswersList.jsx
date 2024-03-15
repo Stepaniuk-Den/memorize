@@ -2,7 +2,7 @@ import "./answersList.scss";
 import PropTypes from "prop-types";
 import Answer from "../answer/Answer";
 
-const AnswersList = ({ options }) => {
+const AnswersList = ({ options, toggleIsActive }) => {
   const handleClickAnswer = (isCorrect) => {
     console.log(isCorrect);
   };
@@ -14,6 +14,7 @@ const AnswersList = ({ options }) => {
           key={option.answer}
           option={option}
           handleClickAnswer={handleClickAnswer}
+          toggleIsActive={toggleIsActive}
         />
       ))}
     </ul>
@@ -21,6 +22,7 @@ const AnswersList = ({ options }) => {
 };
 
 AnswersList.propTypes = {
+  toggleIsActive: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       answer: PropTypes.string.isRequired,
