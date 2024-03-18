@@ -1,0 +1,15 @@
+.muiPagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    font-weight: 200;
+    font-size: 0.9rem;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}

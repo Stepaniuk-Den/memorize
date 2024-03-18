@@ -48,7 +48,11 @@ const Card = ({ quiz }) => {
           {question}
         </div>
         <div className="card__face card__face--back">
-          <AnswersList options={options} toggleIsActive={toggleIsActive} />
+          <AnswersList
+            id={id}
+            options={options}
+            toggleIsActive={toggleIsActive}
+          />
         </div>
       </div>
     </li>

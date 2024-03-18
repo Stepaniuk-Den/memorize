@@ -1,0 +1,31 @@
+const style = {
+  "Button.MuiPaginationItem-rounded.Mui-selected": {
+    color: "#FFF",
+    fontFamily: "Poppins, sans-serif",
+    fontSize: "12px",
+    fontStyle: "normal",
+    fontWeight: "500",
+    lineHeight: "100%" /* 12px */,
+    letterSpacing: "-0.12px",
+    width: "25px",
+    height: "25px",
+    borderRadius: "4px",
+    border: "1px solid #5932EA",
+    background: " #5932EA",
+  },
+  "Button.MuiPaginationItem-rounded": {
+    color: "#404B52",
+    fontFamily: "Poppins, sans-serif",
+    fontSize: "12px",
+    fontStyle: "normal",
+    fontWeight: "500",
+    lineHeight: "100%" /* 12px */,
+    letterSpacing: "-0.12px",
+    width: "25px",
+    height: "25px",
+    borderRadius: "4px",
+    border: "1px solid #EEE",
+    background: " #F5F5F5",
+  },
+};
+export default style;

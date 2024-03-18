@@ -1,10 +1,16 @@
 import "./answersList.scss";
 import PropTypes from "prop-types";
 import Answer from "../answer/Answer";
+import { useDispatch } from "react-redux";
+import { addCurrentAnswers, filterCurrentQuizzes } from "../../redux/quizSlice";
 
-const AnswersList = ({ options, toggleIsActive }) => {
+const AnswersList = ({ id, options, toggleIsActive }) => {
+  const dispatch = useDispatch();
+
   const handleClickAnswer = (isCorrect) => {
-    console.log(isCorrect);
+    // console.log(isCorrect);
+    dispatch(addCurrentAnswers({ id, isCorrect }));
+    dispatch(filterCurrentQuizzes(id));
   };
 
   return (
@@ -22,6 +28,7 @@ const AnswersList = ({ options, toggleIsActive }) => {
 };
 
 AnswersList.propTypes = {
+  id: PropTypes.number.isRequired,
   toggleIsActive: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.shape({
