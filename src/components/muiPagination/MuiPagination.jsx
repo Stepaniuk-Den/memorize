@@ -10,8 +10,10 @@ import {
 import {
   selectedActivePage,
   selectedCardHeight,
+  selectedCardWidth,
   selectedCurrent,
   selectedHomePageHeight,
+  selectedHomePageWidth,
   selectedQuizPerPage,
   selectedTotalQuizzes,
 } from "../../redux/selectors";
@@ -25,7 +27,9 @@ const MuiPagination = () => {
   const useCurrent = useSelector(selectedCurrent);
   const useTotalQuizzes = useSelector(selectedTotalQuizzes);
   const useCardHeight = useSelector(selectedCardHeight);
+  const useCardWidth = useSelector(selectedCardWidth);
   const useHomePageHeight = useSelector(selectedHomePageHeight);
+  const useHomePageWidth = useSelector(selectedHomePageWidth);
 
   const handleChange = (event, value) => {
     dispatch(setActivePage(value));
@@ -51,12 +55,42 @@ const MuiPagination = () => {
 
   useEffect(() => {
     if (!useHomePageHeight) return;
-    const quizPerPage = Math.ceil(
-      (useHomePageHeight - 60 - 32 - 96) / (useCardHeight + 16)
-    );
-    console.log(quizPerPage);
+    const quizCountInWidth = Math.floor(useHomePageWidth / (useCardWidth + 32));
+    const quizPerPage =
+      Math.floor((useHomePageHeight - 60 - 32) / (useCardHeight + 16)) *
+      quizCountInWidth;
     dispatch(setQuizPerPage(quizPerPage));
-  }, [useQuizPerPage, dispatch, useHomePageHeight, useCardHeight]);
+
+    const handleResize = (e) => {
+      const windowHeight = e.target.innerHeight;
+      const windowWidth = e.target.innerWidth;
+      if (windowWidth > useCardWidth * 2 + 32) {
+        const quizCountInWidth = Math.floor(windowWidth / (useCardWidth + 32));
+
+        const quizPerPage =
+          Math.floor((windowHeight - 60 - 32 - 96) / (useCardHeight + 16)) *
+          quizCountInWidth;
+
+        dispatch(setQuizPerPage(quizPerPage));
+      } else {
+        const quizPerPage = Math.floor(
+          (windowHeight - 60 - 32 - 96) / (useCardHeight + 16)
+        );
+        dispatch(setQuizPerPage(quizPerPage));
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [
+    dispatch,
+    useHomePageHeight,
+    useCardHeight,
+    useCardWidth,
+    useHomePageWidth,
+  ]);
 
   return (
     <div className="muiPagination">
