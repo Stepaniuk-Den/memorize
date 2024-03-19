@@ -2,10 +2,16 @@ import { Pagination, Stack } from "@mui/material";
 import "./muiPagination.scss";
 import style from "./muiStyle";
 import { useDispatch, useSelector } from "react-redux";
-import { setActivePage, setDisplayedQuizzes } from "../../redux/quizSlice";
+import {
+  setActivePage,
+  setDisplayedQuizzes,
+  setQuizPerPage,
+} from "../../redux/quizSlice";
 import {
   selectedActivePage,
+  selectedCardHeight,
   selectedCurrent,
+  selectedHomePageHeight,
   selectedQuizPerPage,
   selectedTotalQuizzes,
 } from "../../redux/selectors";
@@ -18,6 +24,8 @@ const MuiPagination = () => {
   const useQuizPerPage = useSelector(selectedQuizPerPage);
   const useCurrent = useSelector(selectedCurrent);
   const useTotalQuizzes = useSelector(selectedTotalQuizzes);
+  const useCardHeight = useSelector(selectedCardHeight);
+  const useHomePageHeight = useSelector(selectedHomePageHeight);
 
   const handleChange = (event, value) => {
     dispatch(setActivePage(value));
@@ -40,6 +48,14 @@ const MuiPagination = () => {
     if (!useTotalQuizzes) return;
     dispatch(setDisplayedQuizzes(displayedQuizzes));
   }, [displayedQuizzes, dispatch, useTotalQuizzes]);
+
+  useEffect(() => {
+    if (!useHomePageHeight) return;
+    const quizPerPage = (useHomePageHeight - 230 - 32) / useCardHeight;
+    console.log(quizPerPage);
+    dispatch(setQuizPerPage(quizPerPage));
+  }, [useQuizPerPage, dispatch, useHomePageHeight, useCardHeight]);
+
   return (
     <div className="muiPagination">
       <p>
@@ -54,6 +70,7 @@ const MuiPagination = () => {
           variant="outlined"
           shape="rounded"
           sx={style}
+          siblingCount={0}
         />
       </Stack>
     </div>

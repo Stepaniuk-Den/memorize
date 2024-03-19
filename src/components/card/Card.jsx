@@ -5,7 +5,9 @@ import "./card.scss";
 
 const Card = ({ quiz }) => {
   const [isActive, setIsActive] = useState(false);
+
   const answersRef = useRef(null);
+
   const { id, question, options } = quiz;
 
   useEffect(() => {
@@ -33,14 +35,6 @@ const Card = ({ quiz }) => {
     card.classList.toggle("is-flipped");
   };
 
-  // let cards = document.querySelectorAll(".card");
-
-  // [...cards].forEach((card) => {
-  //   card.addEventListener("click", function () {
-  //     card.classList.toggle("is-flipped");
-  //   });
-  // });
-
   return (
     <li className="scene">
       <div className="card" id={id} ref={answersRef}>
@@ -56,17 +50,6 @@ const Card = ({ quiz }) => {
         </div>
       </div>
     </li>
-    // <li className="card" id={id} ref={answersRef}>
-    //   {!isActive ? (
-    //     <div className="card__face quiz" onClick={toggleIsActive}>
-    //       {question}
-    //     </div>
-    //   ) : (
-    //     <div className="card__face answers">
-    //       <AnswersList options={options} toggleIsActive={toggleIsActive} />
-    //     </div>
-    //   )}
-    // </li>
   );
 };
 

@@ -12,12 +12,32 @@ const initialState = {
       activePage: 1,
     },
   },
+  width: {
+    cardWidth: 320,
+    homePageWidth: null,
+  },
+  height: {
+    cardHeight: 160,
+    homePageHeight: null,
+  },
 };
 
 const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    setCardHeight: (state, { payload }) => {
+      state.height.cardHeight = payload;
+    },
+    setHomePageHeight: (state, { payload }) => {
+      state.height.homePageHeight = payload;
+    },
+    setCardWidth: (state, { payload }) => {
+      state.width.cardWidth = payload;
+    },
+    setHomePageWidth: (state, { payload }) => {
+      state.width.homePageWidth = payload;
+    },
     setCurrentQuizzes: (state, { payload }) => {
       state.quizzes.current = payload;
     },
@@ -38,15 +58,23 @@ const quizSlice = createSlice({
     setDisplayedQuizzes: (state, { payload }) => {
       state.quizzes.pagination.displayedQuizzes = payload;
     },
+    setQuizPerPage: (state, { payload }) => {
+      state.quizzes.pagination.quizPerPage = payload;
+    },
   },
 });
 
 export const {
+  setCardHeight,
+  setHomePageHeight,
+  setCardWidth,
+  setHomePageWidth,
   setTotalQuizzes,
   setCurrentQuizzes,
   addCurrentAnswers,
   filterCurrentQuizzes,
   setActivePage,
   setDisplayedQuizzes,
+  setQuizPerPage,
 } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;

@@ -12,6 +12,7 @@ import { useEffect } from "react";
 
 const CardList = () => {
   const dispatch = useDispatch();
+
   const useCurrent = useSelector(selectedCurrent);
   const useCurrentAnswers = useSelector(selectedCurrentAnswers);
   const useDisplayedQuizzes = useSelector(selectedDisplayedQuizzes);
@@ -19,7 +20,12 @@ const CardList = () => {
   useEffect(() => {
     if (useCurrent.length > 0) return;
     !useCurrentAnswers?.length ? dispatch(setCurrentQuizzes(acid)) : null;
-    dispatch(setTotalQuizzes(acid.length));
+    dispatch(setTotalQuizzes(useCurrent.length));
+  }, [dispatch, useCurrent, useCurrentAnswers]);
+
+  useEffect(() => {
+    if (!useCurrent.length) return;
+    dispatch(setTotalQuizzes(useCurrent.length));
   }, [dispatch, useCurrent, useCurrentAnswers]);
 
   return (
