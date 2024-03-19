@@ -51,7 +51,9 @@ const MuiPagination = () => {
 
   useEffect(() => {
     if (!useHomePageHeight) return;
-    const quizPerPage = (useHomePageHeight - 230 - 32) / useCardHeight;
+    const quizPerPage = Math.ceil(
+      (useHomePageHeight - 60 - 32 - 96) / (useCardHeight + 16)
+    );
     console.log(quizPerPage);
     dispatch(setQuizPerPage(quizPerPage));
   }, [useQuizPerPage, dispatch, useHomePageHeight, useCardHeight]);
