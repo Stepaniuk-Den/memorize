@@ -55,34 +55,40 @@ const MuiPagination = () => {
 
   useEffect(() => {
     if (!useHomePageHeight) return;
-    const quizCountInWidth = Math.floor(useHomePageWidth / (useCardWidth + 32));
+    const quizCountInWidth = Math.floor(
+      (useHomePageWidth - 32) / (useCardWidth + 8)
+    );
     const quizPerPage =
-      Math.floor((useHomePageHeight - 60 - 32) / (useCardHeight + 16)) *
+      Math.floor((useHomePageHeight - 60 - 32) / (useCardHeight + 8)) *
       quizCountInWidth;
+
     dispatch(setQuizPerPage(quizPerPage));
 
     const handleResize = (e) => {
       const windowHeight = e.target.innerHeight;
       const windowWidth = e.target.innerWidth;
+
       if (windowWidth > useCardWidth * 2 + 32) {
         const quizCountInWidth = Math.floor(windowWidth / (useCardWidth + 32));
-
         const quizPerPage =
-          Math.floor((windowHeight - 60 - 32 - 96) / (useCardHeight + 16)) *
+          Math.floor((windowHeight - 60 - 32 - 96) / (useCardHeight + 8)) *
           quizCountInWidth;
 
         dispatch(setQuizPerPage(quizPerPage));
       } else {
         const quizPerPage = Math.floor(
-          (windowHeight - 60 - 32 - 96) / (useCardHeight + 16)
+          (windowHeight - 60 - 32 - 96) / (useCardHeight + 8)
         );
+
         dispatch(setQuizPerPage(quizPerPage));
       }
     };
 
     window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("orientationchange", handleResize);
     };
   }, [
     dispatch,
