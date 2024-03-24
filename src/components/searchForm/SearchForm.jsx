@@ -3,13 +3,8 @@ import Select from "react-select";
 import "./searchForm.scss";
 import { selectGrade } from "./stylesSelects";
 import Button from "../button/Button";
-// import { useState } from "react";
 
 const SearchForm = () => {
-  // const [grade, setGrade] = useState(null);
-  // const [subject, setSubject] = useState(null);
-  // const [test, setTest] = useState(null);
-
   const options = {
     grade: [
       { value: "8", label: "8th grade" },
@@ -28,12 +23,14 @@ const SearchForm = () => {
     ],
   };
 
-  const handleClick = () => {
-    console.log("click");
+  const handleClick = (resetForm) => {
+    resetForm();
   };
 
   const defaultValue = (options, value) => {
-    return options ? options.find((option) => option.value === value) : "";
+    return options
+      ? options.find((option) => option.value === value) || ""
+      : "";
   };
 
   return (
@@ -54,6 +51,7 @@ const SearchForm = () => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
+
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
@@ -69,10 +67,10 @@ const SearchForm = () => {
           handleSubmit,
           setFieldValue,
           isSubmitting,
+          resetForm,
         }) => (
           <form onSubmit={handleSubmit}>
             <label>
-              {/* <p>Select Grade</p> */}
               <Select
                 type="text"
                 name="grade"
@@ -92,7 +90,6 @@ const SearchForm = () => {
             </label>
             {values.grade && (
               <label>
-                {/* <p>Select Subject</p> */}
                 <Select
                   type="text"
                   name="subject"
@@ -112,7 +109,6 @@ const SearchForm = () => {
             )}
             {values.subject && (
               <label>
-                {/* <p>Select Test</p> */}
                 <Select
                   type="text"
                   name="test"
@@ -136,11 +132,13 @@ const SearchForm = () => {
                 type="submit"
                 // onClick={handleClick}
                 disabled={isSubmitting}
+                className="btnSubmit"
               />
               <Button
                 text={"Cancel"}
-                onClick={handleClick}
+                onClick={() => handleClick(resetForm)}
                 disabled={isSubmitting}
+                className="btnCancel"
               />
             </div>
           </form>
