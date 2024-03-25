@@ -1,4 +1,6 @@
 export const selectedCurrent = (state) => state.quiz.quizzes.current;
+export const selectedCurrentTest = (state) =>
+  state.quiz.quizzes.current.test.value;
 export const selectedCardWidth = (state) => state.quiz.width.cardWidth;
 export const selectedCardHeight = (state) => state.quiz.height.cardHeight;
 export const selectedHomePageWidth = (state) => state.quiz.width.homePageWidth;

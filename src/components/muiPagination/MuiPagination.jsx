@@ -11,7 +11,7 @@ import {
   selectedActivePage,
   selectedCardHeight,
   selectedCardWidth,
-  selectedCurrent,
+  selectedCurrentTest,
   selectedHomePageHeight,
   selectedHomePageWidth,
   selectedQuizPerPage,
@@ -24,7 +24,7 @@ const MuiPagination = () => {
 
   const useActivePage = useSelector(selectedActivePage);
   const useQuizPerPage = useSelector(selectedQuizPerPage);
-  const useCurrent = useSelector(selectedCurrent);
+  const useCurrentTest = useSelector(selectedCurrentTest);
   const useTotalQuizzes = useSelector(selectedTotalQuizzes);
   const useCardHeight = useSelector(selectedCardHeight);
   const useCardWidth = useSelector(selectedCardWidth);
@@ -45,8 +45,8 @@ const MuiPagination = () => {
     : useTotalQuizzes;
 
   const displayedQuizzes = useMemo(() => {
-    return useCurrent.slice(startIndex, endIndex);
-  }, [useCurrent, startIndex, endIndex]);
+    return useCurrentTest.slice(startIndex, endIndex);
+  }, [useCurrentTest, startIndex, endIndex]);
 
   useEffect(() => {
     if (!useTotalQuizzes) return;
@@ -102,7 +102,7 @@ const MuiPagination = () => {
     <div className="muiPagination">
       <p>
         Showing quizzes <span>{startIndex + 1}</span> to{" "}
-        <span>{endOfPage}</span> of <span>{useCurrent.length}</span>
+        <span>{endOfPage}</span> of <span>{useCurrentTest.length}</span>
       </p>
       <Stack>
         <Pagination

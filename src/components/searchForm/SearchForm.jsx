@@ -6,11 +6,15 @@ import { selectGrade } from "./stylesSelects";
 import Button from "../button/Button";
 
 import { testsData } from "../../data/tests";
+import { useDispatch } from "react-redux";
+import { setCurrentQuizzes } from "../../redux/quizSlice";
 
 const SearchForm = () => {
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedTest, setSelectedTest] = useState(null);
+
+  const dispatch = useDispatch();
 
   const options = {
     grade: [
@@ -120,6 +124,7 @@ const SearchForm = () => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
+          dispatch(setCurrentQuizzes(values));
 
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -131,7 +136,6 @@ const SearchForm = () => {
           values,
           errors,
           touched,
-          // handleChange,
           handleBlur,
           handleSubmit,
           setFieldValue,
@@ -144,21 +148,14 @@ const SearchForm = () => {
                 type="text"
                 name="grade"
                 value={selectedGrade}
-                // value={defaultValue(options.uniqGradeOptions, values.grade)}
-                // value={values.grade}
-                // options={options.grade}
                 styles={selectGrade}
                 placeholder="Select grade"
-                // options={options.uniqGradeOptions}
-                // onChange={({ value }) => setFieldValue("grade", value)}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
                 options={createOptions(options.grade)}
                 onChange={(selectedOption) => {
                   handleGradeChange(selectedOption);
-                  // handleChange(selectedOption);
                   setFieldValue("grade", selectedOption);
                 }}
-                onBlur={handleBlur("grade")}
               />
               {!values.grade && (
                 <div className="error">
@@ -174,20 +171,12 @@ const SearchForm = () => {
                   value={selectedSubject}
                   styles={selectGrade}
                   placeholder="Select subject"
-                  // value={defaultValue(
-                  //   options.uniqSubjectOptions,
-                  //   values.subject
-                  // )}
-                  // options={options.uniqSubjectOptions}
-                  // onChange={({ value }) => setFieldValue("subject", value)}
-                  // onBlur={handleBlur}
+                  onBlur={handleBlur}
                   options={createOptions(options.subject)}
                   onChange={(selectedOption) => {
                     handleSubjectChange(selectedOption);
-                    // handleChange("subject")(selectedOption);
                     setFieldValue("subject", selectedOption);
                   }}
-                  onBlur={handleBlur("subject")}
                   isDisabled={!selectedGrade}
                 />
                 {!values.subject && (
@@ -197,7 +186,6 @@ const SearchForm = () => {
                 )}
               </label>
             )}
-            {/* {values.subject && ( */}
             {selectedSubject && (
               <label>
                 <Select
@@ -205,17 +193,12 @@ const SearchForm = () => {
                   name="test"
                   styles={selectGrade}
                   placeholder="Select test"
-                  // value={defaultValue(options.test, values.test)}
-                  // options={options.test}
-                  // onChange={({ value }) => setFieldValue("test", value)}
-                  // onBlur={handleBlur}
                   value={selectedTest}
                   options={createOptions(
                     testsData[selectedGrade.value][selectedSubject.value] || []
                   )}
                   onChange={(selectedOption) => {
                     handleTestChange(selectedOption);
-                    // handleChange("test")(selectedOption);
                     setFieldValue("test", selectedOption);
                   }}
                   onBlur={handleBlur("test")}

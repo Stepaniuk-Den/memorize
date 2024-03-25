@@ -20,7 +20,7 @@ const HomePage = () => {
 
   return (
     <div className="homePage" ref={targetRef}>
-      {useCurrent ? (
+      {!useCurrent.test ? (
         <SearchForm />
       ) : (
         <>

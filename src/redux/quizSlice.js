@@ -2,7 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   quizzes: {
-    current: [],
+    current: {
+      grade: null,
+      subject: null,
+      test: null,
+    },
     currentAnswers: [],
     passed: [],
     totalQuizzes: null,
@@ -48,9 +52,8 @@ const quizSlice = createSlice({
       state.quizzes.currentAnswers.push(payload);
     },
     filterCurrentQuizzes: (state, { payload }) => {
-      state.quizzes.current = state.quizzes.current.filter(
-        (quiz) => quiz.id !== payload
-      );
+      state.quizzes.current.test.value =
+        state.quizzes.current.test.value.filter((quiz) => quiz.id !== payload);
     },
     setActivePage: (state, { payload }) => {
       state.quizzes.pagination.activePage = payload;
