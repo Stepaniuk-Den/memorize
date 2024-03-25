@@ -1,37 +1,106 @@
 import { Formik } from "formik";
+import { useState } from "react";
 import Select from "react-select";
 import "./searchForm.scss";
 import { selectGrade } from "./stylesSelects";
 import Button from "../button/Button";
 
+import { testsData } from "../../data/tests";
+
 const SearchForm = () => {
+  const [selectedGrade, setSelectedGrade] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState(null);
+  const [selectedTest, setSelectedTest] = useState(null);
+
   const options = {
     grade: [
-      { value: "8", label: "8th grade" },
-      { value: "9", label: "9th grade" },
-      { value: "10", label: "10th grade" },
+      { value: "grade8", label: "8th grade" },
+      { value: "grade9", label: "9th grade" },
+      { value: "grade10", label: "10th grade" },
     ],
     subject: [
       { value: "chemistry", label: "Chemistry" },
       { value: "english", label: "English" },
       { value: "algebra", label: "Algebra" },
     ],
-    test: [
-      { value: "test 1", label: "Test 1" },
-      { value: "test 2", label: "Test 2" },
-      { value: "test 3", label: "Test 3" },
-    ],
   };
 
+  const handleGradeChange = (selectedOption) => {
+    setSelectedGrade(selectedOption);
+    setSelectedSubject(null);
+    setSelectedTest(null);
+  };
+
+  const handleSubjectChange = (selectedOption) => {
+    setSelectedSubject(selectedOption);
+    setSelectedTest(null);
+  };
+
+  const handleTestChange = (selectedOption) => {
+    setSelectedTest(selectedOption);
+  };
+
+  const createOptions = (options) => {
+    return options.map((option) => ({
+      value: option.value,
+      label: option.label,
+    }));
+  };
   const handleClick = (resetForm) => {
+    setSelectedGrade(null);
+    setSelectedSubject(null);
+    setSelectedTest(null);
     resetForm();
   };
 
-  const defaultValue = (options, value) => {
-    return options
-      ? options.find((option) => option.value === value) || ""
-      : "";
-  };
+  // const makeAllOptions = (tests) => {
+  //   const allOptions = tests.map((test) => ({
+  //     grade: {
+  //       value: test.grade,
+  //       label: test.label,
+  //     },
+  //     subject: {
+  //       value: test.grade,
+  //       label: test.label,
+  //     },
+  //   }));
+
+  //   const uniqueGrade = new Set();
+  //   const uniqueSubject = new Set();
+  //   const allUniqueOptions = {
+  //     uniqGradeOptions: [],
+  //     uniqSubjectOptions: [],
+  //   };
+
+  //   for (let i = 0; i < allOptions?.length; i++) {
+  //     let objGrade = allOptions[i].grade;
+  //     let grade = objGrade.label;
+
+  //     if (!uniqueGrade.has(grade)) {
+  //       uniqueGrade.add(grade);
+  //       allUniqueOptions.uniqGradeOptions.push(objGrade);
+  //     }
+
+  //     let objSubject = allOptions[i].subject;
+  //     let subject = objSubject.value;
+
+  //     if (!uniqueSubject.has(subject)) {
+  //       uniqueSubject.add(subject);
+  //       allUniqueOptions.uniqSubjectOptions.push(objSubject);
+  //     }
+  //   }
+  //   allUniqueOptions.uniqSubjectOptions.sort((a, b) => a.label - b.label);
+
+  //   return allUniqueOptions;
+  // };
+
+  // const options = makeAllOptions(tests);
+
+  // const defaultValue = (options, value) => {
+  //   return options
+  //     ? options.find((option) => option.value === value) || ""
+  //     : "";
+  // };
 
   return (
     <div className="searchForm">
@@ -74,13 +143,22 @@ const SearchForm = () => {
               <Select
                 type="text"
                 name="grade"
-                value={defaultValue(options.grade, values.grade)}
+                value={selectedGrade}
+                // value={defaultValue(options.uniqGradeOptions, values.grade)}
                 // value={values.grade}
-                options={options.grade}
+                // options={options.grade}
                 styles={selectGrade}
                 placeholder="Select grade"
-                onChange={({ value }) => setFieldValue("grade", value)}
-                onBlur={handleBlur}
+                // options={options.uniqGradeOptions}
+                // onChange={({ value }) => setFieldValue("grade", value)}
+                // onBlur={handleBlur}
+                options={createOptions(options.grade)}
+                onChange={(selectedOption) => {
+                  handleGradeChange(selectedOption);
+                  // handleChange(selectedOption);
+                  setFieldValue("grade", selectedOption);
+                }}
+                onBlur={handleBlur("grade")}
               />
               {!values.grade && (
                 <div className="error">
@@ -93,12 +171,24 @@ const SearchForm = () => {
                 <Select
                   type="text"
                   name="subject"
-                  value={defaultValue(options.subject, values.subject)}
-                  options={options.subject}
+                  value={selectedSubject}
                   styles={selectGrade}
                   placeholder="Select subject"
-                  onChange={({ value }) => setFieldValue("subject", value)}
-                  onBlur={handleBlur}
+                  // value={defaultValue(
+                  //   options.uniqSubjectOptions,
+                  //   values.subject
+                  // )}
+                  // options={options.uniqSubjectOptions}
+                  // onChange={({ value }) => setFieldValue("subject", value)}
+                  // onBlur={handleBlur}
+                  options={createOptions(options.subject)}
+                  onChange={(selectedOption) => {
+                    handleSubjectChange(selectedOption);
+                    // handleChange("subject")(selectedOption);
+                    setFieldValue("subject", selectedOption);
+                  }}
+                  onBlur={handleBlur("subject")}
+                  isDisabled={!selectedGrade}
                 />
                 {!values.subject && (
                   <div className="error">
@@ -107,17 +197,29 @@ const SearchForm = () => {
                 )}
               </label>
             )}
-            {values.subject && (
+            {/* {values.subject && ( */}
+            {selectedSubject && (
               <label>
                 <Select
                   type="text"
                   name="test"
-                  value={defaultValue(options.test, values.test)}
-                  options={options.test}
                   styles={selectGrade}
                   placeholder="Select test"
-                  onChange={({ value }) => setFieldValue("test", value)}
-                  onBlur={handleBlur}
+                  // value={defaultValue(options.test, values.test)}
+                  // options={options.test}
+                  // onChange={({ value }) => setFieldValue("test", value)}
+                  // onBlur={handleBlur}
+                  value={selectedTest}
+                  options={createOptions(
+                    testsData[selectedGrade.value][selectedSubject.value] || []
+                  )}
+                  onChange={(selectedOption) => {
+                    handleTestChange(selectedOption);
+                    // handleChange("test")(selectedOption);
+                    setFieldValue("test", selectedOption);
+                  }}
+                  onBlur={handleBlur("test")}
+                  isDisabled={!selectedSubject}
                 />
                 {!values.test && (
                   <div className="error">
