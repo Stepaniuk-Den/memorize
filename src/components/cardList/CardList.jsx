@@ -1,8 +1,7 @@
 import Card from "../card/Card";
 import "./cardList.scss";
-import { acid } from "../../data/chemistry";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentQuizzes, setTotalQuizzes } from "../../redux/quizSlice";
+import { setTotalQuizzes } from "../../redux/quizSlice";
 import {
   selectedCurrentAnswers,
   selectedCurrentTest,
@@ -32,7 +31,7 @@ const CardList = () => {
     <ul className="cardList">
       {useDisplayedQuizzes
         ? useDisplayedQuizzes.map((quiz) => <Card key={quiz.id} quiz={quiz} />)
-        : useCurrent.map((quiz) => <Card key={quiz.id} quiz={quiz} />)}
+        : useCurrentTest.map((quiz) => <Card key={quiz.id} quiz={quiz} />)}
     </ul>
   );
 };

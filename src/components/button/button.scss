@@ -8,12 +8,18 @@ button {
   background-color: #ffffff;
   border: none;
   border-radius: 0.75rem;
-  font-weight: 200;
-  height: 2.5rem;
 
-  // &:hover {
-  //   scale: 1.2;
-  // }
+  &:disabled {
+    background-color: dimgrey;
+    color: linen;
+    cursor: not-allowed;
+  }
+}
+
+.btnForm {
+  width: 15rem;
+  height: 2.5rem;
+  font-weight: 200;
 }
 
 .btnSubmit {

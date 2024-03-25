@@ -122,14 +122,8 @@ const SearchForm = () => {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          console.log(values);
+        onSubmit={(values) => {
           dispatch(setCurrentQuizzes(values));
-
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
         }}
       >
         {({
@@ -216,14 +210,14 @@ const SearchForm = () => {
                 text={"Submit"}
                 type="submit"
                 // onClick={handleClick}
-                disabled={isSubmitting}
-                className="btnSubmit"
+                disabled={!selectedTest || isSubmitting}
+                className="btnForm btnSubmit"
               />
               <Button
                 text={"Cancel"}
                 onClick={() => handleClick(resetForm)}
-                disabled={isSubmitting}
-                className="btnCancel"
+                disabled={!selectedGrade || isSubmitting}
+                className="btnForm btnCancel"
               />
             </div>
           </form>
