@@ -108,7 +108,13 @@ const SearchForm = () => {
 
   return (
     <div className="searchForm">
-      <h1>Please choose the test</h1>
+      <div className="searchForm__title">
+        <p>Please</p>
+        <p>
+          Choose the{" "}
+          {!selectedGrade ? "grade" : !selectedSubject ? "subject" : "test"}
+        </p>
+      </div>
       <Formik
         initialValues={{ grade: "", subject: "", test: "" }}
         validate={(values) => {
