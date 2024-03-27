@@ -22,7 +22,7 @@ const Button = ({
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  text: PropTypes.string,
+  text: PropTypes.any,
   type: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,

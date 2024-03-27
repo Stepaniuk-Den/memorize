@@ -5,6 +5,7 @@ import Layout from "./components/layout/Layout";
 import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/homePage/HomePage"));
+const Current = lazy(() => import("./pages/currentQuizPage/CurrentQuizPage"));
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="current" element={<Current />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

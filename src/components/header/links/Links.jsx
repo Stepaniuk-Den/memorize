@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 const Links = ({ lang, handleCallBack }) => {
   const items = [
     { en: "Homepage", ua: "Головна" },
-    { en: "Go to test", ua: "" },
-    { en: "Contact", ua: "" },
-    { en: "About Me", ua: "" },
+    { en: "Go to test", ua: "", link: "current" },
+    { en: "Contact", ua: "", link: "current" },
+    { en: "About Me", ua: "", link: "current" },
   ];
 
   return (
     <div className="links">
       {items.map((item) => (
         <a
-          href={`/${item.en}`}
+          href={`/${item.link}`}
           key={item.en}
           onClick={() => handleCallBack(false)}
         >

@@ -127,6 +127,38 @@ export const acid = [
     ],
   },
 ];
+export const test = [
+  {
+    id: 1,
+    question: "test1",
+    options: [
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: true },
+      { answer: "test", isCorrect: false },
+    ],
+  },
+  {
+    id: 2,
+    question: "test2",
+    options: [
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: true },
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: false },
+    ],
+  },
+  {
+    id: 3,
+    question: "test3",
+    options: [
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: true },
+      { answer: "test", isCorrect: false },
+      { answer: "test", isCorrect: true },
+    ],
+  },
+];
 //9th grade
 
 //10th grade

@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import Answer from "../answer/Answer";
 import { useDispatch } from "react-redux";
 import { addCurrentAnswers, filterCurrentQuizzes } from "../../redux/quizSlice";
+import { nanoid } from "nanoid";
 
 const AnswersList = ({ id, options, toggleIsActive }) => {
   const dispatch = useDispatch();
 
   const handleClickAnswer = (isCorrect) => {
-    // console.log(isCorrect);
     dispatch(addCurrentAnswers({ id, isCorrect }));
     dispatch(filterCurrentQuizzes(id));
   };
@@ -17,7 +17,7 @@ const AnswersList = ({ id, options, toggleIsActive }) => {
     <ul className="answersList">
       {options.map((option) => (
         <Answer
-          key={option.answer}
+          key={nanoid()}
           option={option}
           handleClickAnswer={handleClickAnswer}
           toggleIsActive={toggleIsActive}
