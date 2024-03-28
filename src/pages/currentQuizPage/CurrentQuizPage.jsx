@@ -1,29 +1,23 @@
 import { useSelector } from "react-redux";
 import "./currentQuizPage.scss";
 import {
-  selectedCurrent,
   selectedCurrentAnswers,
+  selectedCurrentTest,
   selectedTotalQuizzes,
 } from "../../redux/selectors";
 import SearchForm from "../../components/searchForm/SearchForm";
 import CardList from "../../components/cardList/CardList";
 import MuiPagination from "../../components/muiPagination/MuiPagination";
 import ResultQuiz from "../../components/resultQuiz/ResultQuiz";
-import { useEffect } from "react";
 
 const CurrentQuizPage = () => {
-  const useCurrent = useSelector(selectedCurrent);
   const useCurrentAnswers = useSelector(selectedCurrentAnswers);
   const useTotalQuizzes = useSelector(selectedTotalQuizzes);
-
-  useEffect(() => {
-    console.log(useCurrentAnswers);
-    console.log(useTotalQuizzes);
-  }, [useCurrentAnswers, useTotalQuizzes]);
+  const useCurrentTest = useSelector(selectedCurrentTest);
 
   return (
     <div className="currentQuizPage">
-      {!useCurrent.test ? (
+      {!useCurrentTest ? (
         <SearchForm />
       ) : useCurrentAnswers.length !== useTotalQuizzes ? (
         <>

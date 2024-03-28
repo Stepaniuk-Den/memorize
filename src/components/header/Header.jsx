@@ -21,9 +21,7 @@ const Header = () => {
           onClick={() => setOpen((prev) => !prev)}
           className="burger__btn"
           text={!open ? <RxHamburgerMenu /> : <RxCross1 />}
-        >
-          {/* {!open ? <RxHamburgerMenu /> : <RxCross1 />} */}
-        </Button>
+        ></Button>
       </div>
       <button>login</button>
     </div>

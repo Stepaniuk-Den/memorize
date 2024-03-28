@@ -7,7 +7,7 @@ import Button from "../button/Button";
 
 import { testsData } from "../../data/tests";
 import { useDispatch } from "react-redux";
-import { setCurrentQuizzes } from "../../redux/quizSlice";
+import { setCurrentQuizzes, setTotalQuizzes } from "../../redux/quizSlice";
 
 const SearchForm = () => {
   const [selectedGrade, setSelectedGrade] = useState(null);
@@ -116,7 +116,7 @@ const SearchForm = () => {
         </p>
       </div>
       <Formik
-        initialValues={{ grade: "", subject: "", test: "" }}
+        initialValues={{ grade: "", subject: "", test: {} }}
         validate={(values) => {
           const errors = {};
           if (!values.grade) {
@@ -130,6 +130,7 @@ const SearchForm = () => {
         }}
         onSubmit={(values) => {
           dispatch(setCurrentQuizzes(values));
+          dispatch(setTotalQuizzes(values.test.value.length));
         }}
       >
         {({

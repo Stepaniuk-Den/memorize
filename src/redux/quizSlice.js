@@ -5,7 +5,7 @@ const initialState = {
     current: {
       grade: null,
       subject: null,
-      test: null,
+      test: {},
     },
     currentAnswers: [],
     passed: [],
