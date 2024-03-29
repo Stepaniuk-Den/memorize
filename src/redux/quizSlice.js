@@ -9,6 +9,7 @@ const initialState = {
     },
     currentAnswers: [],
     passed: [],
+    wrongPassed: [],
     totalQuizzes: null,
     pagination: {
       quizPerPage: 3,
@@ -45,6 +46,12 @@ const quizSlice = createSlice({
     setCurrentQuizzes: (state, { payload }) => {
       state.quizzes.current = payload;
     },
+    setPassedQuizzes: (state, { payload }) => {
+      state.quizzes.passed.push(payload);
+    },
+    setWrongPassedQuizzes: (state, { payload }) => {
+      state.quizzes.wrongPassed.push(payload);
+    },
     setTotalQuizzes: (state, { payload }) => {
       state.quizzes.totalQuizzes = payload;
     },
@@ -79,5 +86,7 @@ export const {
   setActivePage,
   setDisplayedQuizzes,
   setQuizPerPage,
+  setPassedQuizzes,
+  setWrongPassedQuizzes,
 } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;

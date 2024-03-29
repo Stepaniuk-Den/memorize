@@ -1,4 +1,6 @@
 export const selectedCurrent = (state) => state.quiz.quizzes.current;
+export const selectedPassed = (state) => state.quiz.quizzes.passed;
+export const selectedWrongPassed = (state) => state.quiz.quizzes.wrongPassed;
 export const selectedCurrentTest = (state) =>
   state.quiz.quizzes.current.test.value;
 export const selectedCardWidth = (state) => state.quiz.width.cardWidth;

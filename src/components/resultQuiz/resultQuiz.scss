@@ -7,4 +7,37 @@
   width: 20rem;
   border: 1px solid $main-accent;
   border-radius: 0.75rem;
+  gap: 1rem;
+  padding: 1rem;
+
+  .resultQUiz__data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    &--rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    &--wrongAnswers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      p {
+        display: flex;
+        align-items: center;
+        line-height: 2rem;
+        gap: 1rem;
+        svg {
+          color: $red-bg;
+        }
+      }
+    }
+  }
 }
