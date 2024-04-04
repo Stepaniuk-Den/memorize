@@ -1,22 +1,28 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase, ref } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const API_KEY = import.meta.env.VITE_API_KEY;
+const MESSAGING_SENDER_ID = import.meta.env.VITE_MESSAGING_SENDER_ID;
+const APP_ID = import.meta.env.VITE_APP_ID;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDIOL40QwvwceRlQi80go3GNkw49RqHoK4",
+  apiKey: API_KEY,
   authDomain: "stden-memorize.firebaseapp.com",
   projectId: "stden-memorize",
   storageBucket: "stden-memorize.appspot.com",
-  messagingSenderId: "750001716136",
-  appId: "1:750001716136:web:bc2ffaeed36b45087f7b9d",
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
   measurementId: "G-ESFDJT097C",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
+export const db = getDatabase(app);
+export const dbRef = ref;
+export const auth = getAuth(app);
+export const firestore = getFirestore(app);
+
+export const storage = getStorage(app);
