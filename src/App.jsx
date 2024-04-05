@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/loginPage/LoginPage";
 import RegistrationPage from "./pages/registrationPage/RegistrationPage";
+import PrivateRoute from "./guards/PrivateRoute";
 import Layout from "./components/layout/Layout";
 import { lazy } from "react";
 
@@ -14,7 +15,7 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<PrivateRoute>{<Home />}</PrivateRoute>} />
           <Route path="current" element={<Current />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
