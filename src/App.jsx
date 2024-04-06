@@ -16,7 +16,14 @@ function App() {
         <Route path="registration" element={<RegistrationPage />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<PrivateRoute>{<Home />}</PrivateRoute>} />
-          <Route path="current" element={<Current />} />
+          <Route
+            path="current"
+            element={
+              <PrivateRoute>
+                <Current />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

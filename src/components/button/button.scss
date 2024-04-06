@@ -31,12 +31,23 @@ button {
   background-color: $red-bg;
 }
 
-// @media (hover: hover) {
-//   .btnSubmit:hover {
-//     transition: all 500ms ease-in-out;
-//   }
-//   .btnCancel {
-//     color: $main-color;
-//     background-color: $red-bg;
-//   }
-// }
+.exitBtn {
+  width: 60px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 300;
+  color: $main-bg;
+  transition: var(--all);
+  scale: 1;
+
+  &:hover {
+    color: #ffffff;
+    background: $main-accent;
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+}
