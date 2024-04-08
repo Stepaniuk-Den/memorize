@@ -45,6 +45,7 @@ const Header = () => {
   const CallBack = (childData) => {
     return setOpen(childData);
   };
+
   return (
     <div className="header">
       <div className="header__burger burger">
