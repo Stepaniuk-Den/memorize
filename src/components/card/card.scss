@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   width: 20rem;
+
   height: 10rem;
   padding: 1rem;
   border: 2px solid $main-color;
@@ -28,6 +29,7 @@
     position: absolute;
     backface-visibility: hidden;
     width: 20rem;
+    height: max-content;
     height: 10rem;
     padding: 1rem;
     text-align: center;
@@ -40,7 +42,14 @@
   .card__face--front {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    span {
+      font-size: 1rem;
+      // font-style: italic;
+      color: $main-accent;
+    }
   }
 }

@@ -70,7 +70,7 @@
       // border-radius: 50%;
       // border: none;
       background-color: transparent;
-      // cursor: pointer;
+      cursor: pointer;
     }
   }
 
@@ -78,11 +78,11 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    .logoutContainer {
+    .logout {
       position: relative;
       display: flex;
 
-      .modalOverlay {
+      &__modalOverlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -94,22 +94,22 @@
         overflow: hidden;
         background-color: #000000cc;
         z-index: 5;
+      }
 
-        .modal {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 2rem;
-          width: 18rem;
-          height: 12rem;
-          background: $main-color;
-          border-radius: 0.8rem;
+      &__modal {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        width: 15rem;
+        height: 12rem;
+        background: $main-color;
+        border-radius: 0.8rem;
 
-          p {
-            color: $soft-bg;
-          }
+        p {
+          color: $soft-bg;
         }
       }
     }
@@ -132,7 +132,7 @@
       }
     }
 
-    .settings {
+    &--settings {
       display: flex;
       justify-content: center;
       align-items: center;

@@ -61,24 +61,24 @@ const Header = () => {
         <p>
           Hi,<span> {user ? user : "   Anonymous"} !</span>
         </p>
-        <button className="settings" onClick={toggle}>
+        <button className="header__user--settings" onClick={toggle}>
           <IoSettingsSharp />
         </button>
-        <div className="logoutContainer">
+        <div className="header__user--logout logout">
           <Button text="Logout" onClick={toggleExit}></Button>
           {exitIsOpen && (
-            <div className="modalOverlay" onClick={backdropClick}>
-              <div className="modal">
+            <div className="logout__modalOverlay" onClick={backdropClick}>
+              <div className="logout__modal">
                 <p>Do you want to logout?</p>
                 <Button
                   text="Yes"
                   onClick={handleLogout}
-                  className="exitBtn"
+                  className="logout__exitBtn"
                 ></Button>
                 <Button
                   text="No"
                   onClick={toggleExit}
-                  className="exitBtn"
+                  className="logout__exitBtn"
                 ></Button>
               </div>
             </div>

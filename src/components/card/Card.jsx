@@ -37,11 +37,24 @@ const Card = ({ quiz }) => {
 
   return (
     <li className="scene">
-      <div className="card" id={id} ref={answersRef}>
-        <div className="card__face card__face--front" onClick={toggleIsActive}>
+      <div
+        className="card"
+        id={id}
+        ref={answersRef}
+        style={{ height: `${options.length * 2.5}rem` }}
+      >
+        <div
+          className="card__face card__face--front"
+          onClick={toggleIsActive}
+          style={{ height: `${options.length * 2.5}rem` }}
+        >
+          <span>Question № {id}</span>
           {question}
         </div>
-        <div className="card__face card__face--back">
+        <div
+          className="card__face card__face--back"
+          style={{ height: `${options.length * 2.5}rem` }}
+        >
           <AnswersList
             id={id}
             options={options}
