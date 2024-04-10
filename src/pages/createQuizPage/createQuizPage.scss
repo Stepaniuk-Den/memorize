@@ -1,11 +1,11 @@
 @import "../../styles/variables.scss";
-.homePage {
+.createQuizPage {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 100%;
   padding: 1rem;
-  overflow-y: auto;
+  gap: 2rem;
 }

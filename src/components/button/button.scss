@@ -31,18 +31,39 @@ button {
   background-color: $red-bg;
 }
 
+.logout__lgtBtn {
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    stroke: $main-accent;
+    transition: $all-300;
+    scale: 1;
+
+    &:hover {
+      scale: 1.2;
+    }
+  }
+}
+
 .logout__exitBtn {
-  width: 60px;
-  height: 40px;
+  width: 5rem;
+  height: 2.5rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.8rem;
   font-weight: 300;
-  color: $main-bg;
-  transition: var(--all);
+  color: $main-color;
+  transition: $all-300;
   scale: 1;
 
+  &.yes {
+    background-color: $aqua-bg;
+  }
+
+  &.no {
+    background-color: $red-bg;
+  }
+
   &:hover {
-    color: #ffffff;
     background: $main-accent;
     scale: 1.1;
   }

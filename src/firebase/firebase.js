@@ -16,6 +16,8 @@ const firebaseConfig = {
   messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID,
   measurementId: "G-ESFDJT097C",
+  databaseURL:
+    "https://stden-memorize-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 const app = initializeApp(firebaseConfig);

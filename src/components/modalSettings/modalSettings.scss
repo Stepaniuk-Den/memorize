@@ -11,7 +11,7 @@
   align-items: center;
   overflow: hidden;
   background-color: #000000cc;
-  z-index: 5;
+  z-index: 101;
 
   .wrapper {
     position: relative;
@@ -19,34 +19,34 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 400px;
-    padding: 40px 20px;
+    width: clamp(20rem, 100%, 24rem);
+    padding: 2.5rem 1.25rem;
     border: none;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #000000;
+    border-radius: 0.8rem;
+    background: $light-bg;
+    color: $dark-color;
 
     .closeModal {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 30px;
-      height: 30px;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 1.75rem;
+      height: 1.75rem;
       cursor: pointer;
       border-radius: 10px;
 
-      transition: all 300ms ease-in-out;
+      transition: $all-300;
       scale: 1;
 
       &:hover {
         scale: 1.2;
-        color: #ffffff;
+        color: $main-color;
         background: $main-bg;
       }
     }
 
     .form {
-      width: 300px;
+      width: 17.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -54,35 +54,48 @@
       text-align: center;
 
       h3 {
-        font-size: 36px;
-        margin-bottom: 60px;
+        font-size: 2rem;
+        margin-bottom: 3.75rem;
       }
 
       p {
         align-self: start;
-        font-size: 18px;
-        margin-bottom: 10px;
+        font-size: 1.1rem;
+        margin-bottom: 0.6rem;
       }
 
       .passwords {
-        font-size: 14px;
+        font-size: 0.9rem;
       }
 
       .save {
-        width: 100px;
-        height: 40px;
-        padding: 10px;
-        border-radius: 10px;
+        width: 6rem;
+        height: 2.5rem;
+        padding: 0.6rem;
+        border-radius: 0.6rem;
         background: none;
         border: 1px solid $main-bg;
-        color: #000000;
-        transition: all 300ms ease-in-out;
+        color: $dark-color;
+        transition: $all-300;
         scale: 1;
 
+        &-active {
+          width: 6rem;
+          height: 2.5rem;
+          padding: 0.6rem;
+          border-radius: 0.6rem;
+          background: none;
+          border: 1px solid $main-accent;
+          width: 17.5rem;
+          color: $main-color;
+          background: $main-accent;
+          transition: $all-300;
+        }
+
         &:hover {
-          width: 300px;
-          color: #ffffff;
-          background: $main-bg;
+          width: 17.5rem;
+          color: $main-color;
+          background: $main-accent;
         }
 
         &:active {
@@ -92,24 +105,39 @@
 
       .wrapperInput {
         position: relative;
-        margin-bottom: 30px;
+        margin-bottom: 1.75rem;
 
         input {
-          width: 300px;
-          height: 40px;
-          padding: 10px;
+          width: 17.5rem;
+          height: 2.5rem;
+          padding: 0.6rem;
           border: 1px solid $main-bg;
-          border-radius: 10px;
+          border-radius: 0.6rem;
 
           &::placeholder {
-            font-size: 14px;
+            font-size: 0.9rem;
             font-weight: 200;
+          }
+
+          &:focus {
+            border: 2px solid $main-accent;
+            outline: none;
+          }
+
+          &.fulfilled:not(:focus) {
+            border: 2px solid $green-bg;
+            outline: none;
+          }
+
+          &.error {
+            border: 2px solid $red-bg;
+            outline: none;
           }
         }
 
         .toggle {
           position: absolute;
-          right: 15px;
+          right: 1rem;
           top: 50%;
           transform: translateY(-50%);
           display: flex;
@@ -118,8 +146,8 @@
           cursor: pointer;
 
           svg {
-            width: 18px;
-            height: 18px;
+            width: 1.1rem;
+            height: 1.1rem;
           }
         }
 
@@ -130,9 +158,9 @@
           transform: translateX(-50%);
           width: 100%;
           display: block;
-          line-height: 14px;
-          font-size: 12px;
-          color: #ff0000;
+          line-height: 0.9rem;
+          font-size: 0.75rem;
+          color: $red-bg;
         }
       }
     }

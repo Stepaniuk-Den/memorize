@@ -3,6 +3,8 @@ import "./header.scss";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross1 } from "react-icons/rx";
 import { IoSettingsSharp } from "react-icons/io5";
+import { IoLogOutOutline } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 import Links from "./links/Links";
 import Button from "../button/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,14 +61,23 @@ const Header = () => {
         ></Button>
       </div>
       <div className="header__user">
-        <p>
+        <p className="header__user--name">
           Hi,<span> {user ? user : "   Anonymous"} !</span>
         </p>
+        <div className="header__user--avatar">
+          <FaUser />
+        </div>
         <button className="header__user--settings" onClick={toggle}>
           <IoSettingsSharp />
         </button>
         <div className="header__user--logout logout">
-          <Button text="Logout" onClick={toggleExit}></Button>
+          <Button
+            text={<IoLogOutOutline />}
+            onClick={toggleExit}
+            className="logout__lgtBtn"
+          >
+            <IoLogOutOutline />
+          </Button>
           {exitIsOpen && (
             <div className="logout__modalOverlay" onClick={backdropClick}>
               <div className="logout__modal">
@@ -74,12 +85,12 @@ const Header = () => {
                 <Button
                   text="Yes"
                   onClick={handleLogout}
-                  className="logout__exitBtn"
+                  className="logout__exitBtn yes"
                 ></Button>
                 <Button
                   text="No"
                   onClick={toggleExit}
-                  className="logout__exitBtn"
+                  className="logout__exitBtn no"
                 ></Button>
               </div>
             </div>

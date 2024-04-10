@@ -4,7 +4,7 @@ const Links = ({ lang, handleCallBack }) => {
   const items = [
     { en: "Homepage", ua: "Головна" },
     { en: "Go to test", ua: "", link: "current" },
-    { en: "Contact", ua: "", link: "current" },
+    { en: "Create Quiz", ua: "", link: "create" },
     { en: "About Me", ua: "", link: "current" },
   ];
 

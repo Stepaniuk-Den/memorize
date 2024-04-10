@@ -57,55 +57,6 @@ const SearchForm = () => {
     resetForm();
   };
 
-  // const makeAllOptions = (tests) => {
-  //   const allOptions = tests.map((test) => ({
-  //     grade: {
-  //       value: test.grade,
-  //       label: test.label,
-  //     },
-  //     subject: {
-  //       value: test.grade,
-  //       label: test.label,
-  //     },
-  //   }));
-
-  //   const uniqueGrade = new Set();
-  //   const uniqueSubject = new Set();
-  //   const allUniqueOptions = {
-  //     uniqGradeOptions: [],
-  //     uniqSubjectOptions: [],
-  //   };
-
-  //   for (let i = 0; i < allOptions?.length; i++) {
-  //     let objGrade = allOptions[i].grade;
-  //     let grade = objGrade.label;
-
-  //     if (!uniqueGrade.has(grade)) {
-  //       uniqueGrade.add(grade);
-  //       allUniqueOptions.uniqGradeOptions.push(objGrade);
-  //     }
-
-  //     let objSubject = allOptions[i].subject;
-  //     let subject = objSubject.value;
-
-  //     if (!uniqueSubject.has(subject)) {
-  //       uniqueSubject.add(subject);
-  //       allUniqueOptions.uniqSubjectOptions.push(objSubject);
-  //     }
-  //   }
-  //   allUniqueOptions.uniqSubjectOptions.sort((a, b) => a.label - b.label);
-
-  //   return allUniqueOptions;
-  // };
-
-  // const options = makeAllOptions(tests);
-
-  // const defaultValue = (options, value) => {
-  //   return options
-  //     ? options.find((option) => option.value === value) || ""
-  //     : "";
-  // };
-
   return (
     <div className="searchForm">
       <div className="searchForm__title">

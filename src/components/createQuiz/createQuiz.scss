@@ -1,2 +1,28 @@
+@import "../../styles/variables.scss";
 .createQuiz {
+  width: 100%;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    &--input {
+      border: 1px solid $soft-bg;
+      cursor: pointer;
+      border-radius: 0.75rem;
+      box-shadow: none;
+      background-color: $light-bg;
+      color: $dark-color;
+      width: 20rem;
+      height: 2.5rem;
+      padding: 0 1rem;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }

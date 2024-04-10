@@ -135,6 +135,15 @@ const ModalSettings = () => {
                     placeholder="Enter Your Name"
                     onChange={handleChange}
                     value={values.displayName}
+                    className={
+                      touched.displayName && errors.displayName
+                        ? "error"
+                        : touched.displayName &&
+                          values.displayName &&
+                          !errors.displayName
+                        ? "fulfilled"
+                        : "empty"
+                    }
                   />
                   {errors && touched && (
                     <ErrorMessage
@@ -152,6 +161,13 @@ const ModalSettings = () => {
                     placeholder="Enter Your Email"
                     onChange={handleChange}
                     value={values.email}
+                    className={
+                      touched.email && errors.email
+                        ? "error"
+                        : touched.email && values.email && !errors.email
+                        ? "fulfilled"
+                        : "empty"
+                    }
                   />
                   {errors && touched && (
                     <ErrorMessage
@@ -170,6 +186,15 @@ const ModalSettings = () => {
                     placeholder="Enter old password"
                     onChange={handleChange}
                     value={values.oldPassword}
+                    className={
+                      touched.oldPassword && errors.oldPassword
+                        ? "error"
+                        : touched.oldPassword &&
+                          values.oldPassword &&
+                          !errors.oldPassword
+                        ? "fulfilled"
+                        : "empty"
+                    }
                   />
                   <button
                     className="toggle"
@@ -204,6 +229,15 @@ const ModalSettings = () => {
                     placeholder="Enter new password"
                     onChange={handleChange}
                     value={values.newPassword}
+                    className={
+                      touched.newPassword && errors.newPassword
+                        ? "error"
+                        : touched.newPassword &&
+                          values.newPassword &&
+                          !errors.newPassword
+                        ? "fulfilled"
+                        : "empty"
+                    }
                   />
                   <button
                     className="toggle"
@@ -230,7 +264,12 @@ const ModalSettings = () => {
                     />
                   )}
                 </div>
-                <button className="save" type="submit">
+                <button
+                  className={
+                    values.displayName || values.email ? "save-active" : "save"
+                  }
+                  type="submit"
+                >
                   Save
                 </button>
               </Form>

@@ -7,6 +7,7 @@ import { lazy } from "react";
 
 const Home = lazy(() => import("./pages/homePage/HomePage"));
 const Current = lazy(() => import("./pages/currentQuizPage/CurrentQuizPage"));
+const Create = lazy(() => import("./pages/createQuizPage/CreateQuizPage"));
 
 function App() {
   return (
@@ -21,6 +22,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Current />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="create"
+            element={
+              <PrivateRoute>
+                <Create />
               </PrivateRoute>
             }
           />
