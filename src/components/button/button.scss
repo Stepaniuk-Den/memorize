@@ -22,7 +22,18 @@ button {
   font-weight: 200;
 }
 
+.btnPrev,
+.btnNext {
+  width: 5rem;
+  background-color: $main-accent;
+  color: $main-color;
+}
+
+// .btnNext {
+// }
+
 .btnSubmit {
+  width: 7rem;
   color: $main-color;
   background-color: $aqua-bg;
 }

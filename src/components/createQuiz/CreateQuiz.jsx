@@ -53,13 +53,15 @@ const CreateQuiz = () => {
                 className="createQuiz__form--input"
               />
             </label>
-            <Button text={"Prev"} className="btnForm" />
-            <Button text={"Next"} className="btnForm" />
-            <Button
-              text={"Submit"}
-              type="submit"
-              className="btnForm btnSubmit"
-            />
+            <div className="createQuiz__form--btnContainer">
+              <Button text={"Prev"} className="btnForm btnPrev" />
+              <Button text={"Next"} className="btnForm btnNext" />
+              <Button
+                text={"Submit"}
+                type="submit"
+                className="btnForm btnSubmit"
+              />
+            </div>
           </form>
         )}
       </Formik>
