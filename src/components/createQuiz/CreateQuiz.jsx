@@ -61,6 +61,7 @@ const CreateQuiz = () => {
                 type="submit"
                 className="btnForm btnSubmit"
               />
+              <Button text={"Cancel"} className="btnForm btnCancel" />
             </div>
           </form>
         )}

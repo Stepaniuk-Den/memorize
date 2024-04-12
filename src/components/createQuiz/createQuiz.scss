@@ -28,9 +28,11 @@
     &--btnContainer {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       width: 20rem;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
   }
 }
