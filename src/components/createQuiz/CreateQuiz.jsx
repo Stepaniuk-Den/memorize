@@ -13,14 +13,14 @@ const CreateQuiz = () => {
       >
         {({
           values,
-          errors,
-          touched,
+          // errors,
+          // touched,
           handleBlur,
           handleChange,
           handleSubmit,
-          setFieldValue,
-          isSubmitting,
-          resetForm,
+          // setFieldValue,
+          // isSubmitting,
+          // resetForm,
         }) => (
           <form onSubmit={handleSubmit} className="createQuiz__form">
             <label htmlFor="title" className="createQuiz__form--title">
